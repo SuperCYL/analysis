@@ -46,6 +46,7 @@ module.exports = Event.extend(function Base(container, config) {
     console.log("ccccc",data);
     var cfg = this.mergeConfig(config);
     //如果有需要的话,更新样式
+    let that = this;
 
     var html = `<div id="certify" style="height:100%;">`
     html += `<div class="swiper-container">`
@@ -75,11 +76,10 @@ module.exports = Event.extend(function Base(container, config) {
       },
       on:{
         slideChange: function(){
-          // alert('改变了，activeIndex为'+this.activeIndex);
-          // console.log($(".swiper-slide-duplicate-active").attr("id"));
           var id = $(".swiper-slide-duplicate-active").attr("id");
           for(var i = 0;i<data.length; i++){
             if(id == data[i]["id"]){
+              console.log(data[i])
               this.emit('rollEvent', {item:data[i]});
             }
           }
@@ -92,7 +92,7 @@ module.exports = Event.extend(function Base(container, config) {
       var id = $(this).context.id;
       for(var i = 0;i<data.length; i++){
         if(id == data[i]["id"]){
-          this.emit('click', {item:data[i]});
+          that.emit('click', {item:data[i]});
         }
       }
     });
