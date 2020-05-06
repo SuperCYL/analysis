@@ -15,7 +15,6 @@ html, body {
     height: 100%;
   }
   .swiper-slide {
-    background:rgba(38,186,241,1);
     background:rgba(6,31,74,0.45);
     border:2px solid rgba(0,121,161,1);
     opacity:0.3;
