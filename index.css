@@ -38,7 +38,8 @@ html, body {
     position: relative;
   }
   .swiper-slide-active,.swiper-slide-duplicate-active{
-    background:rgba(38,186,241,1);
+    background:rgba(20,152,228,0.45);
+    border:2px solid rgba(0,121,161,1);
   }
   .a_icon{
     position: absolute;

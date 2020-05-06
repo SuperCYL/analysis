@@ -79,8 +79,7 @@ module.exports = Event.extend(function Base(container, config) {
           var id = $(".swiper-slide-duplicate-active").attr("id");
           for(var i = 0;i<data.length; i++){
             if(id == data[i]["id"]){
-              console.log(data[i])
-              this.emit('rollEvent', {item:data[i]});
+              that.emit('rollEvent', {item:data[i]});
             }
           }
         },
