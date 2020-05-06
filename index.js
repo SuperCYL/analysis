@@ -43,7 +43,6 @@ module.exports = Event.extend(function Base(container, config) {
    */
   render: function (data, config) {
     data = this.data(data);
-    console.log("ccccc",data);
     var cfg = this.mergeConfig(config);
     //如果有需要的话,更新样式
     let that = this;
@@ -55,9 +54,9 @@ module.exports = Event.extend(function Base(container, config) {
     for(var i = 0;i<data.length; i++){
       html += `<div class="swiper-slide" id="${data[i]["id"]}">`
       html += `<img class="a_icon" src='${data[i]["icon"]}'>`
-      html += `<div class="a_accountName">${data[i]["accountName"]}</div>`
-      html += `<div class="a_title">${data[i]["title"]}</div>`
-      html += `<span class="a_releaseTime">${data[i]["releaseTime"]}</span>`
+      html += `<div class="a_accountName">${data[i]["id"]}</div>`
+      // html += `<div class="a_title">${data[i]["title"]}</div>`
+      // html += `<span class="a_releaseTime">${data[i]["releaseTime"]}</span>`
       html += `</div>`
     }
 
@@ -69,14 +68,19 @@ module.exports = Event.extend(function Base(container, config) {
       centeredSlides: true,
       direction: 'vertical',
       autoplay: true,
-	    loop: true,
+      loop: true,
+      grabCursor:true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
       },
       on:{
-        slideChange: function(){
-          var id = $(".swiper-slide-duplicate-active").attr("id");
+        slideChangeTransitionStart: function(){
+          $(".swiper-slide-prev").prev(".swiper-slide").addClass("active-defined");
+          $(".swiper-slide-prev").prev(".swiper-slide").siblings(".swiper-slide").removeClass("active-defined");
+          console.log($(".swiper-slide-prev").prev(".swiper-slide").attr("id"));
+
+          var id = $(".active-defined").attr("id");
           for(var i = 0;i<data.length; i++){
             if(id == data[i]["id"]){
               that.emit('rollEvent', {item:data[i]});

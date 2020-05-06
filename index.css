@@ -38,6 +38,14 @@ html, body {
     position: relative;
   }
   .swiper-slide-active,.swiper-slide-duplicate-active{
+    /* background:rgba(20,152,228,0.45);
+    border:2px solid rgba(0,121,161,1); */
+  }
+  .swiper-slide-prev{
+    /* background:rgba(20,152,228,0.45);
+    border:2px solid rgba(0,121,161,1); */
+  }
+  .active-defined{
     background:rgba(20,152,228,0.45);
     border:2px solid rgba(0,121,161,1);
   }
@@ -51,6 +59,7 @@ html, body {
     top:5px;
     left:50px;
     font-size: 26px;
+    text-align: left;
   }
   .a_title{
     position: absolute;
