@@ -52,33 +52,13 @@ module.exports = Event.extend(function Base(container, config) {
     html += `<div class="swiper-wrapper">`
 
     for(var i = 0;i<data.length; i++){
-      html += `<div class="swiper-slide">`
+      html += `<div class="swiper-slide" id="${data[i]["id"]}">`
       html += `<img class="a_icon" src='${data[i]["icon"]}'>`
       html += `<div class="a_accountName">${data[i]["accountName"]}</div>`
       html += `<div class="a_title">${data[i]["title"]}</div>`
       html += `<span class="a_releaseTime">${data[i]["releaseTime"]}</span>`
       html += `</div>`
     }
-
-    // var html = `
-    // <div id="certify" style="height:100%;">
-    //   <div class="swiper-container">
-    //     <div class="swiper-wrapper">
-    //       <div class="swiper-slide">Slide 1</div>
-    //       <div class="swiper-slide">Slide 2</div>
-    //       <div class="swiper-slide">Slide 3</div>
-    //       <div class="swiper-slide">Slide 4</div>
-    //       <div class="swiper-slide">Slide 5</div>
-    //       <div class="swiper-slide">Slide 6</div>
-    //       <div class="swiper-slide">Slide 7</div>
-    //       <div class="swiper-slide">Slide 8</div>
-    //       <div class="swiper-slide">Slide 9</div>
-    //       <div class="swiper-slide">Slide 10</div>
-    //     </div>
-    //   <!-- Add Pagination -->
-    //   <div class="swiper-pagination"></div>
-    // </div>
-    // </div>`
 
     this.container.html(html);
 
@@ -87,14 +67,36 @@ module.exports = Event.extend(function Base(container, config) {
       spaceBetween: 0,
       centeredSlides: true,
       direction: 'vertical',
-      autoplay: false,
+      autoplay: true,
 	    loop: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
       },
+      on:{
+        slideChange: function(){
+          // alert('改变了，activeIndex为'+this.activeIndex);
+          // console.log($(".swiper-slide-duplicate-active").attr("id"));
+          var id = $(".swiper-slide-duplicate-active").attr("id");
+          for(var i = 0;i<data.length; i++){
+            if(id == data[i]["id"]){
+              this.emit('rollEvent', {item:data[i]});
+            }
+          }
+        },
+      },
     });
-
+    
+    $(".swiper-slide").click(function(){
+      console.log($(this).context.id)
+      var id = $(this).context.id;
+      for(var i = 0;i<data.length; i++){
+        if(id == data[i]["id"]){
+          this.emit('click', {item:data[i]});
+        }
+      }
+    });
+    
     //更新图表
     //this.chart.render(data, cfg);
     this.updateStyle();

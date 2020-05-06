@@ -1,6 +1,6 @@
 {
-  "name": "@namespace/analysis",
-  "version": "0.0.1",
+  "name": "@hk-componentPackage/analysis",
+  "version": "0.0.3",
   "dependencies": {
     "bcore": "0.0.18",
     "jquery": "2.1.4",
@@ -39,6 +39,24 @@
           10,
           100
         ]
+      }
+    },
+    "events": {                              
+      "click": {                       
+        "description": "点击事件",          
+        "fields": {                         
+          "value": {   
+            "item":{}               
+          }
+        }
+      },
+      "rollEvent": {                       
+        "description": "滚动事件",          
+        "fields": {                         
+          "value": {   
+            "item":{}               
+          }
+        }
       }
     },
     "api_data": {
