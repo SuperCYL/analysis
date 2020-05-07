@@ -54,9 +54,9 @@ module.exports = Event.extend(function Base(container, config) {
     for(var i = 0;i<data.length; i++){
       html += `<div class="swiper-slide" id="${data[i]["id"]}">`
       html += `<img class="a_icon" src='${data[i]["icon"]}'>`
-      html += `<div class="a_accountName">${data[i]["id"]}</div>`
-      // html += `<div class="a_title">${data[i]["title"]}</div>`
-      // html += `<span class="a_releaseTime">${data[i]["releaseTime"]}</span>`
+      html += `<div class="a_accountName">${data[i]["accountName"]}</div>`
+      html += `<div class="a_title">${data[i]["title"]}</div>`
+      html += `<span class="a_releaseTime">${data[i]["releaseTime"]}</span>`
       html += `</div>`
     }
 
@@ -70,6 +70,7 @@ module.exports = Event.extend(function Base(container, config) {
       autoplay: true,
       loop: true,
       grabCursor:true,
+      speed:1000,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
