@@ -1,5 +1,5 @@
 {
-  "name": "@hk-componentPackage/analysis",
+  "name": "@hk-componentPackage/matrix",
   "version": "0.0.9",
   "dependencies": {
     "bcore": "0.0.18",
@@ -7,7 +7,7 @@
     "lodash": "4.6.1"
   },
   "datav": {
-    "cn_name": "analysis",
+    "cn_name": "matrix",
     "icon": "",
     "protocol": 2,
     "type": [
