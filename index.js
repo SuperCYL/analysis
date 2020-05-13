@@ -47,7 +47,7 @@ module.exports = Event.extend(function Base(container, config) {
     //如果有需要的话,更新样式
     let that = this;
 
-    var html = `<div id="certify" style="height:100%;">`
+    var html = `<div id="analysisSeiper" style="height:100%;">`
     html += `<div class="swiper-container">`
     html += `<div class="swiper-wrapper">`
 
@@ -62,7 +62,7 @@ module.exports = Event.extend(function Base(container, config) {
 
     this.container.html(html);
 
-    new Swiper('#certify .swiper-container', {
+    new Swiper('#analysisSeiper .swiper-container', {
       slidesPerView: 5,
       spaceBetween: 0,
       centeredSlides: true,
@@ -77,26 +77,26 @@ module.exports = Event.extend(function Base(container, config) {
       },
       on:{
         slideChangeTransitionStart: function(){
-          $(".swiper-slide-prev").prev(".swiper-slide").addClass("active-defined");
-          $(".swiper-slide-prev").prev(".swiper-slide").siblings(".swiper-slide").removeClass("active-defined");
+          $("#analysisSeiper .swiper-slide-prev").prev(".swiper-slide").addClass("active-defined");
+          $("#analysisSeiper .swiper-slide-prev").prev(".swiper-slide").siblings(".swiper-slide").removeClass("active-defined");
           console.log($(".swiper-slide-prev").prev(".swiper-slide").attr("id"));
 
-          var id = $(".active-defined").attr("id");
+          var id = $("#analysisSeiper .active-defined").attr("id");
           for(var i = 0;i<data.length; i++){
             if(id == data[i]["id"]){
-              that.emit('rollEvent', {item:data[i]});
+              that.emit('analysisRollEvent', {item:data[i]});
             }
           }
         },
       },
     });
     
-    $(".swiper-slide").click(function(){
+    $("#analysisSeiper .swiper-slide").click(function(){
       console.log($(this).context.id)
       var id = $(this).context.id;
       for(var i = 0;i<data.length; i++){
         if(id == data[i]["id"]){
-          that.emit('click', {item:data[i]});
+          that.emit('analysisClick', {item:data[i]});
         }
       }
     });
