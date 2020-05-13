@@ -7,7 +7,7 @@
     "lodash": "4.6.1"
   },
   "datav": {
-    "cn_name": "analysis",
+    "cn_name": "matrix",
     "icon": "",
     "protocol": 2,
     "type": [
